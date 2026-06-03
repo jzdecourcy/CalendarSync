@@ -1,0 +1,42 @@
+name: Sync filtered calendar
+
+on:
+  schedule:
+    # Every 4 hours, matching the source CDN's cache window. Times are UTC.
+    - cron: "0 */4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: calendar-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Generate filtered calendar
+        run: dotnet run --project src/CalendarSync/CalendarSync.csproj -c Release
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- docs/filtered.ics; then
+            echo "No changes to publish."
+          else
+            git add docs/filtered.ics
+            git commit -m "chore: refresh filtered calendar [skip ci]"
+            git push
+          fi

@@ -1,0 +1,4 @@
+* text=auto
+
+# iCalendar (RFC 5545) requires CRLF line endings on every platform.
+*.ics text eol=crlf
