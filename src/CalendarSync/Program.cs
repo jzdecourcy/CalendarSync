@@ -10,7 +10,8 @@ internal sealed record SyncConfig(
     string SourceUrl,
     string OutputPath,
     string? CalendarName,
-    string[] IncludePatterns);
+    string[] IncludePatterns,
+    CalendarFilter.SummaryReplacement[]? SummaryReplacements);
 
 internal static class Program
 {
@@ -28,8 +29,11 @@ internal static class Program
 
             Console.WriteLine($"Source size: {source.Length:N0} chars");
 
-            CalendarFilter.Result result =
-                CalendarFilter.Filter(source, config.IncludePatterns, config.CalendarName);
+            CalendarFilter.Result result = CalendarFilter.Filter(
+                source,
+                config.IncludePatterns,
+                config.CalendarName,
+                config.SummaryReplacements);
 
             string outputPath = ResolveOutputPath(config.OutputPath);
 

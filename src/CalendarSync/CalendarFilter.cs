@@ -10,7 +10,8 @@ namespace CalendarSync;
 ///
 /// The original VEVENT text is preserved byte-for-byte (UID, VTIMEZONE references,
 /// recurrence rules, X- properties) so the result is a faithful subset of the
-/// source feed. Only the calendar name in the prologue is optionally rewritten.
+/// source feed. The only optional rewrites are the calendar name in the prologue
+/// and a redundant prefix trimmed from each event's SUMMARY.
 /// </summary>
 public static class CalendarFilter
 {
@@ -20,9 +21,18 @@ public static class CalendarFilter
     private static readonly Regex LineFold =
         new("\r?\n[ \t]", RegexOptions.Compiled);
 
+    private static readonly Regex SummaryLine =
+        new("^SUMMARY:.*$", RegexOptions.Multiline | RegexOptions.Compiled);
+
+    public sealed record SummaryReplacement(string From, string To);
+
     public sealed record Result(string Output, int Kept, int Dropped);
 
-    public static Result Filter(string source, IReadOnlyList<string> includePatterns, string? calendarName)
+    public static Result Filter(
+        string source,
+        IReadOnlyList<string> includePatterns,
+        string? calendarName,
+        IReadOnlyList<SummaryReplacement>? summaryReplacements = null)
     {
         if (String.IsNullOrEmpty(source))
         {
@@ -55,7 +65,7 @@ public static class CalendarFilter
         {
             if (Matches(block.Value, includePatterns))
             {
-                kept.Add(block.Value);
+                kept.Add(RewriteSummary(block.Value, summaryReplacements));
             }
             else
             {
@@ -86,6 +96,30 @@ public static class CalendarFilter
         }
 
         return false;
+    }
+
+    private static string RewriteSummary(
+        string eventBlock,
+        IReadOnlyList<SummaryReplacement>? summaryReplacements)
+    {
+        if (summaryReplacements is null || summaryReplacements.Count == 0)
+        {
+            return eventBlock;
+        }
+
+        // Only touch the SUMMARY line so replacement text can never bleed into
+        // DESCRIPTION, LOCATION, or other fields.
+        return SummaryLine.Replace(eventBlock, match =>
+        {
+            string line = match.Value;
+
+            foreach (SummaryReplacement replacement in summaryReplacements)
+            {
+                line = line.Replace(replacement.From, replacement.To);
+            }
+
+            return line;
+        });
     }
 
     private static string RewriteCalendarName(string text, string? calendarName)
