@@ -3,9 +3,8 @@ VERSION:2.0
 PRODID:icalendar-ruby
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Oakland Bulldogs 18u (filtered)
-X-WR-CALDESC:The event schedule for the Oakland Bulldogs 16-18 Baseball tea
- m
+X-WR-CALNAME:Oakland Bulldogs 18u
+X-WR-CALDESC:The event schedule for the Oakland Bulldogs 18u Baseball team
 X-WR-TIMEZONE:America/New_York
 X-PUBLISHED-TTL:PT1H
 X-TS-TIMESTAMP:2026-06-03 11:54:40

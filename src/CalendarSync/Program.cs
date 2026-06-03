@@ -10,6 +10,7 @@ internal sealed record SyncConfig(
     string SourceUrl,
     string OutputPath,
     string? CalendarName,
+    string? CalendarDescription,
     string[] IncludePatterns,
     CalendarFilter.SummaryReplacement[]? SummaryReplacements);
 
@@ -33,7 +34,8 @@ internal static class Program
                 source,
                 config.IncludePatterns,
                 config.CalendarName,
-                config.SummaryReplacements);
+                config.SummaryReplacements,
+                config.CalendarDescription);
 
             string outputPath = ResolveOutputPath(config.OutputPath);
 

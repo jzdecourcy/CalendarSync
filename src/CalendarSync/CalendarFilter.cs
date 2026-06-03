@@ -32,7 +32,8 @@ public static class CalendarFilter
         string source,
         IReadOnlyList<string> includePatterns,
         string? calendarName,
-        IReadOnlyList<SummaryReplacement>? summaryReplacements = null)
+        IReadOnlyList<SummaryReplacement>? summaryReplacements = null,
+        string? calendarDescription = null)
     {
         if (String.IsNullOrEmpty(source))
         {
@@ -44,7 +45,11 @@ public static class CalendarFilter
         if (blocks.Count == 0)
         {
             // No events to filter (e.g. an out-of-season feed) — pass the body through unchanged.
-            return new Result(RewriteCalendarName(source, calendarName), 0, 0);
+            string passthrough = RewriteCalendarName(source, calendarName);
+
+            passthrough = RewriteCalendarDescription(passthrough, calendarDescription);
+
+            return new Result(passthrough, 0, 0);
         }
 
         int firstStart = blocks[0].Index;
@@ -74,6 +79,8 @@ public static class CalendarFilter
         }
 
         prologue = RewriteCalendarName(prologue, calendarName);
+
+        prologue = RewriteCalendarDescription(prologue, calendarDescription);
 
         string body = String.Join("\r\n", kept);
 
@@ -133,6 +140,22 @@ public static class CalendarFilter
             text,
             "^X-WR-CALNAME:.*$",
             "X-WR-CALNAME:" + calendarName,
+            RegexOptions.Multiline);
+    }
+
+    private static string RewriteCalendarDescription(string text, string? calendarDescription)
+    {
+        if (String.IsNullOrEmpty(calendarDescription))
+        {
+            return text;
+        }
+
+        // X-WR-CALDESC may be folded across several continuation lines, so consume
+        // the property line plus any following lines that begin with a space/tab.
+        return Regex.Replace(
+            text,
+            @"^X-WR-CALDESC:.*(?:\r?\n[ \t].*)*",
+            "X-WR-CALDESC:" + calendarDescription,
             RegexOptions.Multiline);
     }
 }
