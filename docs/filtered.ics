@@ -7,7 +7,7 @@ X-WR-CALNAME:Oakland Bulldogs 18u
 X-WR-CALDESC:The event schedule for the Oakland Bulldogs 18u Baseball team
 X-WR-TIMEZONE:America/New_York
 X-PUBLISHED-TTL:PT1H
-X-TS-TIMESTAMP:2026-06-30 20:09:23
+X-TS-TIMESTAMP:2026-07-01 02:24:23
 BEGIN:VTIMEZONE
 TZID:America/New_York
 BEGIN:DAYLIGHT
@@ -384,38 +384,38 @@ SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u @ PT Oakland
 END:VEVENT
 BEGIN:VEVENT
-DTSTAMP:20260625T220736
+DTSTAMP:20260630T215745
 UID:122562-360810300
 DTSTART;TZID=America/New_York:20260709T090000
 DTEND;TZID=America/New_York:20260709T090000
-DESCRIPTION:Location: Northville HS\n 18u  (Arrival Time:  9:00 AM (Eastern
-  Time (US & Canada))) 
-LAST-MODIFIED:20260625T220736
-LOCATION:45700 Six Mile Rd Northville\, MI\, United States
+DESCRIPTION:Location: Seaholm High School\n 18u  (Arrival Time:  9:00 AM (E
+ astern Time (US & Canada))) 
+LAST-MODIFIED:20260630T215745
+LOCATION:2436 W Lincoln\nBirmingham MI 48009\nUnited States
 SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u vs Michigan Bulls Wright
 END:VEVENT
 BEGIN:VEVENT
-DTSTAMP:20260625T220853
+DTSTAMP:20260630T215818
 UID:122562-360810301
 DTSTART;TZID=America/New_York:20260710T090000
 DTEND;TZID=America/New_York:20260710T090000
-DESCRIPTION:Location: Brother Rice Warrior Park\n   (Arrival Time:  9:00 AM
-  (Eastern Time (US & Canada))) 
-LAST-MODIFIED:20260625T220853
-LOCATION:1525 Equity Dr.  Troy\, MI 48084
+DESCRIPTION:Location: Seaholm High School\n   (Arrival Time:  9:00 AM (East
+ ern Time (US & Canada))) 
+LAST-MODIFIED:20260630T215818
+LOCATION:2436 W Lincoln\nBirmingham MI 48009\nUnited States
 SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u vs USA Prime Gregorich
 END:VEVENT
 BEGIN:VEVENT
-DTSTAMP:20260625T220939
+DTSTAMP:20260630T215841
 UID:122562-369560046
 DTSTART;TZID=America/New_York:20260710T111500
 DTEND;TZID=America/New_York:20260710T111500
-DESCRIPTION:Location: Brother Rice Warrior Park\n 18u  (Arrival Time: 11:15
-  AM (Eastern Time (US & Canada))) 
-LAST-MODIFIED:20260625T220939
-LOCATION:1525 Equity Dr.  Troy\, MI 48084
+DESCRIPTION:Location: Seaholm High School\n 18u  (Arrival Time: 11:15 AM (E
+ astern Time (US & Canada))) 
+LAST-MODIFIED:20260630T215841
+LOCATION:2436 W Lincoln\nBirmingham MI 48009\nUnited States
 SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u vs Midland North
 END:VEVENT
