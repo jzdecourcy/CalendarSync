@@ -7,7 +7,7 @@ X-WR-CALNAME:Oakland Bulldogs 18u
 X-WR-CALDESC:The event schedule for the Oakland Bulldogs 18u Baseball team
 X-WR-TIMEZONE:America/New_York
 X-PUBLISHED-TTL:PT1H
-X-TS-TIMESTAMP:2026-07-23 11:39:23
+X-TS-TIMESTAMP:2026-07-23 15:41:28
 BEGIN:VTIMEZONE
 TZID:America/New_York
 BEGIN:DAYLIGHT
@@ -465,26 +465,26 @@ SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u @PBR Toledo
 END:VEVENT
 BEGIN:VEVENT
-DTSTAMP:20260720T144906
+DTSTAMP:20260723T111532
 UID:122562-362970834
 DTSTART;TZID=America/New_York:20260723T111514
 DTEND;TZID=America/New_York:20260723T111514
-DESCRIPTION:Location: Allen Park High School\n   (Arrival Time: 11:15 AM (E
- astern Time (US & Canada))) 
-LAST-MODIFIED:20260720T144906
-LOCATION:18401 Champaign Rd Allen Park\, MI\, United States
+DESCRIPTION:Location: Liggett University\n   (Arrival Time: 11:15 AM (Easte
+ rn Time (US & Canada))) 
+LAST-MODIFIED:20260723T111532
+LOCATION:1045 Cook Rd Grosse Pointe Woods\, MI\, United States
 SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u vs Detroit Prospects
 END:VEVENT
 BEGIN:VEVENT
-DTSTAMP:20260720T145339
+DTSTAMP:20260723T111621
 UID:122562-362970835
 DTSTART;TZID=America/New_York:20260724T090014
 DTEND;TZID=America/New_York:20260724T090014
-DESCRIPTION:Location: Bloomfield Hills High School\n   (Arrival Time:  9:00
-  AM (Eastern Time (US & Canada))) 
-LAST-MODIFIED:20260720T145339
-LOCATION:4200 Andover Rd\nBloomfield Hills MI 48302\nUnited States
+DESCRIPTION:Location: Liggett University\n   (Arrival Time:  9:00 AM (Easte
+ rn Time (US & Canada))) 
+LAST-MODIFIED:20260723T111621
+LOCATION:1045 Cook Rd Grosse Pointe Woods\, MI\, United States
 SEQUENCE:0
 SUMMARY:Oakland Bulldogs 18u vs Ice baseball scout
 END:VEVENT
